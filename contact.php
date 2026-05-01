@@ -1,19 +1,10 @@
 <?php
-// ============================================================
-// FICHIER : contact.php — Formulaire de contact
-// ============================================================
 require_once 'db.php';
-
-// -------------------------------------------------------
-// TRAITEMENT DU FORMULAIRE (POST)
-// -------------------------------------------------------
 $success = false;
 $errors  = [];
 $form    = ['nom'=>'', 'email'=>'', 'sujet'=>'', 'message'=>''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Récupération et nettoyage des données
     $form['nom']     = trim($_POST['nom']     ?? '');
     $form['email']   = trim($_POST['email']   ?? '');
     $form['sujet']   = trim($_POST['sujet']   ?? '');
