@@ -1,24 +1,17 @@
 <?php
-// ============================================================
-// FICHIER : index.php — Page d'accueil Premium
-// ============================================================
 require_once 'db.php';
 $page_title = 'SmartBike — Vélos Électriques Premium';
-
-// Récupérer les 3 vélos les mieux notés pour la section "featured"
-$stmt = $pdo->query("SELECT * FROM produits ORDER BY note DESC, id ASC LIMIT 3");
+ 
+// Produits vedettes : Urban Glide X1 (id=1), Trail Blazer (id=2), Speed Demon S45 (id=5)
+$stmt = $pdo->query("SELECT * FROM produits WHERE id IN (1, 2, 5) ORDER BY note DESC");
 $featured = $stmt->fetchAll();
-
+ 
 // Statistiques dynamiques pour la section chiffres
 $stats = $pdo->query("SELECT COUNT(*) as nb_produits, AVG(note) as note_moy FROM produits")->fetch();
 require_once 'header.php';
 ?>
-
-<!-- ============================================================
-     SECTION 1 : HERO — Accroche principale avec vidéo de fond simulée
-     ============================================================ -->
+ 
 <section class="hero-section">
-    <!-- Fond animé avec particules CSS -->
     <div class="hero-bg">
         <div class="hero-particles">
             <?php for($i=0; $i<20; $i++): ?>
@@ -26,7 +19,7 @@ require_once 'header.php';
             <?php endfor; ?>
         </div>
     </div>
-
+ 
     <div class="container hero-content">
         <div class="hero-text reveal">
             <span class="hero-eyebrow">✦ Mobilité du futur</span>
@@ -44,11 +37,11 @@ require_once 'header.php';
                 <a href="magasins.php"  class="btn btn-ghost">Nos magasins →</a>
             </div>
         </div>
-
-        <!-- Carte produit flottante (décorative) -->
+ 
+        <!-- Carte produit flottante — Speed Demon S45 -->
         <div class="hero-card reveal" style="animation-delay:.2s">
             <div class="floating-card">
-                <img src="https://images.unsplash.com/photo-1558618047-f4e90e1eff40?w=600" alt="Speed Demon">
+                <img src="https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=800" alt="Speed Demon S45">
                 <div class="floating-card-info">
                     <span class="floating-badge">⚡ Nouveau</span>
                     <h3>Speed Demon S45</h3>
@@ -58,17 +51,12 @@ require_once 'header.php';
             </div>
         </div>
     </div>
-
-    <!-- Scroll indicator -->
+ 
     <div class="scroll-indicator">
         <div class="scroll-dot"></div>
     </div>
 </section>
-
-
-<!-- ============================================================
-     SECTION 2 : CHIFFRES CLÉS (Stats)
-     ============================================================ -->
+ 
 <section class="stats-section">
     <div class="container stats-grid">
         <div class="stat-item reveal">
@@ -89,18 +77,15 @@ require_once 'header.php';
         </div>
     </div>
 </section>
-
-
-<!-- ============================================================
-     SECTION 3 : CATÉGORIES
-     ============================================================ -->
+ 
+ 
 <section class="categories-section">
     <div class="container">
         <div class="section-header reveal">
             <span class="section-eyebrow">Notre gamme</span>
             <h2 class="section-title">Un vélo pour chaque aventure</h2>
         </div>
-
+ 
         <div class="categories-grid">
             <a href="catalogue.php?categorie=urban" class="cat-card reveal" style="--cat-color:#00e5a0">
                 <div class="cat-icon">🏙️</div>
@@ -129,18 +114,14 @@ require_once 'header.php';
         </div>
     </div>
 </section>
-
-
-<!-- ============================================================
-     SECTION 4 : PRODUITS VEDETTES (Top 3)
-     ============================================================ -->
+ 
 <section class="featured-section">
     <div class="container">
         <div class="section-header reveal">
             <span class="section-eyebrow">Sélection</span>
             <h2 class="section-title">Nos meilleures ventes</h2>
         </div>
-
+ 
         <div class="featured-grid">
             <?php foreach ($featured as $i => $p): ?>
             <article class="product-card reveal" style="animation-delay: <?= $i * 0.15 ?>s">
@@ -170,17 +151,13 @@ require_once 'header.php';
             </article>
             <?php endforeach; ?>
         </div>
-
+ 
         <div class="text-center reveal">
             <a href="catalogue.php" class="btn btn-outline-gold">Voir tous les vélos (<?= $stats['nb_produits'] ?>)</a>
         </div>
     </div>
 </section>
 
-
-<!-- ============================================================
-     SECTION 5 : BANNIÈRE USP (Arguments de vente)
-     ============================================================ -->
 <section class="usp-section">
     <div class="container usp-grid">
         <div class="usp-item reveal">
@@ -213,8 +190,7 @@ require_once 'header.php';
         </div>
     </div>
 </section>
-
-<!-- Counter JS pour les statistiques animées -->
+ 
 <script>
 document.querySelectorAll('.stat-number').forEach(el => {
     const target = parseInt(el.dataset.target);
@@ -233,5 +209,5 @@ document.querySelectorAll('.stat-number').forEach(el => {
     observer.observe(el);
 });
 </script>
-
+ 
 <?php require_once 'footer.php'; ?>
