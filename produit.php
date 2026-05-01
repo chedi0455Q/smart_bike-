@@ -1,7 +1,5 @@
 <?php
-// ============================================================
-// FICHIER : produit.php — Page détail d'un produit
-// ============================================================
+
 require_once 'db.php';
 
 // Validation de l'ID
