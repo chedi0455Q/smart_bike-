@@ -1,20 +1,11 @@
 <?php
-// ============================================================
-// FICHIER : catalogue.php — Catalogue filtrable
-// ============================================================
-require_once 'db.php';
 
-// -------------------------------------------------------
-// FILTRE PAR CATÉGORIE (paramètre GET optionnel)
-// -------------------------------------------------------
+require_once 'db.php';
 $categories_valides = ['urban', 'trail', 'cargo', 'speed'];
 $filtre = isset($_GET['categorie']) && in_array($_GET['categorie'], $categories_valides)
     ? $_GET['categorie']
     : null;
 
-// -------------------------------------------------------
-// TRI (paramètre GET optionnel)
-// -------------------------------------------------------
 $tris_valides = ['prix_asc', 'prix_desc', 'note_desc', 'autonomie_desc'];
 $tri = isset($_GET['tri']) && in_array($_GET['tri'], $tris_valides) ? $_GET['tri'] : 'note_desc';
 
@@ -26,9 +17,6 @@ $order_map = [
 ];
 $order_sql = $order_map[$tri];
 
-// -------------------------------------------------------
-// REQUÊTE AVEC FILTRE DYNAMIQUE
-// -------------------------------------------------------
 if ($filtre) {
     $stmt = $pdo->prepare("SELECT * FROM produits WHERE categorie = :cat ORDER BY $order_sql");
     $stmt->execute([':cat' => $filtre]);
