@@ -1,7 +1,5 @@
 <?php
-// ============================================================
-// FICHIER : magasins.php — Page avec carte géographique
-// ============================================================
+
 require_once 'db.php';
  
 $stmt = $pdo->query("SELECT * FROM magasins ORDER BY id ASC");
