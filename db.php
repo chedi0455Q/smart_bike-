@@ -1,13 +1,5 @@
 <?php
-// ============================================================
-// PROJET : Smart Bike PREMIUM
-// FICHIER : db.php
-// DESCRIPTION : Connexion PDO + fonctions utilitaires globales
-// ============================================================
 
-// -------------------------------------------------------
-// 1. CONFIGURATION — adaptez selon votre environnement
-// -------------------------------------------------------
 define('DB_HOST',    'localhost');
 define('DB_NAME',    'smart_bike');
 define('DB_USER',    'root');
@@ -16,9 +8,6 @@ define('DB_CHARSET', 'utf8mb4');
 define('SITE_NAME',  'SmartBike');
 define('SITE_URL',   'http://localhost/smart_bike_v2');
 
-// -------------------------------------------------------
-// 2. CONNEXION PDO SÉCURISÉE
-// -------------------------------------------------------
 try {
     $dsn = sprintf(
         'mysql:host=%s;dbname=%s;charset=%s',
@@ -42,27 +31,14 @@ try {
 }
 
 
-// -------------------------------------------------------
-// 3. FONCTIONS UTILITAIRES GLOBALES
-// -------------------------------------------------------
-
-/**
- * Sécurise et affiche une chaîne (protection XSS)
- */
 function e(string $str): string {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
-/**
- * Formate un prix en euros : 1299.99 → "1 299,99 €"
- */
 function formatPrix(float $prix): string {
     return number_format($prix, 2, ',', ' ') . ' €';
 }
 
-/**
- * Génère les étoiles HTML à partir d'une note /5
- */
 function etoiles(float $note): string {
     $html = '<span class="stars">';
     for ($i = 1; $i <= 5; $i++) {
@@ -92,9 +68,6 @@ function badgeCategorie(string $cat): string {
     return '<span class="badge ' . $class . '">' . $label . '</span>';
 }
 
-/**
- * Redirige proprement vers une page
- */
 function redirect(string $url): void {
     header('Location: ' . $url);
     exit;
