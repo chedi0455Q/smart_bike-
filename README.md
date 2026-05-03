@@ -1,16 +1,11 @@
-# ⚡ Smart Bike Premium — v2.0
+#  Smart Bike Premium — v2.0
 ### Projet E-commerce · Portfolio BTS SIO · PHP 8 + MySQL + Leaflet.js
+##  Arborescence complète
 
----
-
-## 📁 Arborescence complète
-
-```
 smart_bike_v2/
 │
 ├── 📄 database.sql          → BDD : tables produits, magasins, avis + données
 ├── 📄 db.php                → Connexion PDO + fonctions utilitaires (e, formatPrix, etoiles…)
-│
 ├── 📄 index.php             → Accueil : Hero animé, stats, catégories, produits vedettes
 ├── 📄 catalogue.php         → Catalogue : filtres par catégorie + tri dynamique
 ├── 📄 produit.php           → Fiche produit : specs, galerie, avis, produits similaires
@@ -22,11 +17,9 @@ smart_bike_v2/
 └── includes/
     ├── header.php           → <head> + navbar sticky responsive
     └── footer.php           → Footer + scripts JS globaux
-```
 
----
 
-## 🚀 Installation
+## Installation
 
 ### 1. Créer la base de données
 1. Lancer **XAMPP** → démarrer Apache + MySQL
@@ -53,7 +46,7 @@ http://localhost/smart_bike_v2/
 
 ---
 
-## 🗺️ Carte géographique (Leaflet.js)
+##  Carte géographique (Leaflet.js)
 
 La page `magasins.php` utilise **Leaflet.js** avec les tuiles **OpenStreetMap** (100% gratuit).
 
@@ -69,7 +62,7 @@ Le code PHP encode les données en JSON avec `json_encode()`, puis JavaScript cr
 
 ---
 
-## 🔐 Sécurité — Récapitulatif
+##  Sécurité — Récapitulatif
 
 | Technique | Où | Pourquoi |
 |-----------|-----|----------|
@@ -82,9 +75,8 @@ Le code PHP encode les données en JSON avec `json_encode()`, puis JavaScript cr
 | `http_response_code(500)` | `db.php` | Codes HTTP appropriés |
 | `trim()` sur tous les inputs | `contact.php` | Nettoyage des espaces |
 
----
 
-## 🛠️ Stack technique
+##  Stack technique
 
 | Technologie | Usage |
 |-------------|-------|
@@ -97,11 +89,10 @@ Le code PHP encode les données en JSON avec `json_encode()`, puis JavaScript cr
 | **Leaflet.js** (CDN) | Carte interactive open source |
 | **Google Fonts** (CDN) | Cormorant Garamond + DM Sans |
 
-> ⚠️ Leaflet.js et Google Fonts sont les **seules dépendances externes** — chargées via CDN, pas installées localement.
+>  Leaflet.js et Google Fonts sont les **seules dépendances externes** — chargées via CDN, pas installées localement.
 
----
 
-## 📋 Fonctionnalités
+## Fonctionnalités
 
 - [x] Accueil avec hero animé (particules CSS) et carte produit 3D flottante
 - [x] Statistiques animées au scroll (IntersectionObserver)
